@@ -12,3 +12,11 @@ interface IAddressListResponse {
   idCount: number,
   address: { city: string, state: string };
 }
+interface IEmploymentTypeListResponse {
+  idCount: number,
+  employmentType: string;
+}
+interface IRequiredSecurityClearance {
+  idCount: number,
+  customText3: string;
+}
