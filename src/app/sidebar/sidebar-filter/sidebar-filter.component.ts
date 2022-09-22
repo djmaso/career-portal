@@ -115,6 +115,28 @@ export class SidebarFilterComponent implements OnChanges {
           this.checkboxFilter.emit(values);
         };
         break;
+        case 'customText3':
+        this.options = res.data
+        .filter((unfilteredResult: IRequiredSecurityClearance) => {
+          return !!unfilteredResult.customText3;
+        })
+        .map((result: IRequiredSecurityClearance) => {
+          return {
+            value: result.customText3,
+            label: `${result.customText3} (${result.idCount})`,
+          };
+        });
+        interaction = (API: FieldInteractionApi) => {
+          let values: string[] = [];
+          this.lastSetValue = API.getActiveValue();
+          if (API.getActiveValue()) {
+          values = API.getActiveValue().map((value: number) => {
+            return `customText3{?^^equals}${value}`;
+          });
+          }
+          this.checkboxFilter.emit(values);
+        };
+        break;
       default:
         break;
     }
