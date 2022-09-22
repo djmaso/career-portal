@@ -13,6 +13,13 @@
 <ng-container *ngIf="!loading">
   <div class="filters">
     <app-sidebar-filter
+    field="customText3"
+    title="{{ 'Required Clearance' | translate }}"
+    [filter]="filter"
+    (checkboxFilter)="updateFilter('customText3', $event)"
+    data-automation-id="customText3"
+    ></app-sidebar-filter>
+    <app-sidebar-filter
       field="publishedCategory(id,name)"
       title="{{ 'CATEGORY' | translate }}"
       [filter]="filter"
