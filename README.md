@@ -29,7 +29,7 @@ In order to build Bullhorn Career Portal, ensure that you have **[Git](http://gi
 Clone a copy of the repo:
 
 ```
-git clone https://github.com/bullhorn/career-portal.git
+git clone https://github.com/djmaso/career-portal.git
 ```
 
 Change to the Career Portal directory:
