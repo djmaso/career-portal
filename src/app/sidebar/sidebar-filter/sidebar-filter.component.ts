@@ -131,7 +131,7 @@ export class SidebarFilterComponent implements OnChanges {
           this.lastSetValue = API.getActiveValue();
           if (API.getActiveValue()) {
           values = API.getActiveValue().map((value: number) => {
-            return `customText3{?^^equals}${value}`;
+            return `customText3{?^^equals}{?^^delimiter}${value}{?^^delimiter}`;
           });
           }
           this.checkboxFilter.emit(values);
