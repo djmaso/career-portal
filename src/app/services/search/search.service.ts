@@ -41,7 +41,7 @@ export class SearchService {
     let queryArray: string[] = [];
     let params: any = {};
 
-    params.query = `(isOpen:1) AND (isDeleted:0)${this.formatAdditionalCriteria(true)}${this.formatFilter(filter, true, ignoreFields)}`;
+    params.where = `(isOpen=TRUE AND isDeleted=FALSE)${this.formatAdditionalCriteria(false)}${this.formatFilter(filter, false, ignoreFields)}`;
     params.count = `500`;
     params.fields = 'id';
     params.sort = 'id';
@@ -51,7 +51,7 @@ export class SearchService {
     }
     let queryString: string = queryArray.join('&');
 
-    return this.http.get(`${this.baseUrl}/search/JobOrder?${queryString}`);
+    return this.http.get(`${this.baseUrl}/query/JobOrder?${queryString}`);
   }
 
   public getAvailableFilterOptions(ids: number[], field: string): Observable<any> {
