@@ -65,7 +65,7 @@ export class SidebarComponent {
         delete this.filter['keyword'];
       }
       this.searchService
-        .getCurrentJobIds(this.filter, [])
+        .getCurrentJobIdsSearch(this.filter, [])
         .subscribe(this.handleJobIdsOnSuccess.bind(this));
     }, 250);
   }
