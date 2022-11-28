@@ -53,7 +53,24 @@ export class SearchService {
 
     return this.http.get(`${this.baseUrl}/query/JobOrder?${queryString}`);
   }
+  
+  public getCurrentJobIdsSearch(filter: any, ignoreFields: string[]): Observable<any> {
+    let queryArray: string[] = [];
+    let params: any = {};
 
+    params.query = `(isOpen:1) AND (isDeleted:0)${this.formatAdditionalCriteria(true)}${this.formatFilter(filter, true, ignoreFields)}`;
+    params.count = `500`;
+    params.fields = 'id';
+    params.sort = 'id';
+
+    for (let key in params) {
+      queryArray.push(`${key}=${params[key]}`);
+  }
+    let queryString: string = queryArray.join('&');
+
+    return this.http.get(`${this.baseUrl}/search/JobOrder?${queryString}`);
+  }
+  
   public getAvailableFilterOptions(ids: number[], field: string): Observable<any> {
     let params: any = {};
     let queryArray: string[] = [];
